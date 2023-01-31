@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""A Basic Flask Application with one endpoint"""
+"""
+    A Basic Babel app
+"""
 from flask import Flask, render_template
 from flask_babel import Babel
 
@@ -16,8 +18,8 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/")
-def home():
+@app.route("/", methods = [GET])
+def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("1-index.html")
 
