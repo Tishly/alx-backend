@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     """Endpoint that routes user to the homepage"""
-    return render_template("index.html")
+    return render_template("0-index.html")
 
 
 if __name__ == "__main__":
