@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """A Basic Flask Application with one endpoint"""
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request
+from flask_babel import Babel
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -10,11 +10,15 @@ babel = Babel(app)
 @app.route("/")
 def home():
     """Endpoint that routes user to the homepage"""
-    return render_templatei("0-index.html")
+    return render_template("0-index.html")
 
 
 class Config(object):
     LANGUAGES = ["en", "fr"]
+
+@babel.localselector
+def get_locale():
+    return request.accept_languages.best_match(Config['LANGUAGES'])
 
 
 if __name__ == "__main__":
