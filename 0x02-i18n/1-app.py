@@ -15,11 +15,11 @@ def home():
 
 class Config(object):
     LANGUAGES = ['en', 'fr']
-    TIMEZONE = "UTC"
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
-
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+# app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+# app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
 
 
 # babel = Babel(app, local_selector="en", timezone_selector="UTC")
