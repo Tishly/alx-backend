@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """A Basic Flask Application with one endpoint"""
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 app = Flask(__name__)
@@ -15,6 +15,8 @@ def home():
 
 class Config(object):
     LANGUAGES = ["en", "fr"]
+    TIMEZONE = "UTC"
+
 
 @babel.localselector
 def get_locale():
