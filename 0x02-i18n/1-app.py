@@ -13,8 +13,8 @@ def home():
     return render_templatei("0-index.html")
 
 
-class Config():
-    LANGUAGES =["en", "fr"]
+class Config(object):
+    LANGUAGES = ["en", "fr"]
 
 
 if __name__ == "__main__":
