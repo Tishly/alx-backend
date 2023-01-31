@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 app = Flask(__name__)
-babel = Babel(app)
+# babel = Babel(app)
 
 
 @app.route("/")
@@ -23,5 +23,6 @@ def get_locale():
     return request.accept_languages.best_match(Config['LANGUAGES'])
 
 
+babel = Babel(app, local_selector="en", timezone_selector="UTC")
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=3000)
