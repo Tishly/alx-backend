@@ -18,11 +18,11 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", methods = [GET])
+@app.route("/", methods=['GET'])
 def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("1-index.html")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=3000)
+    app.run()
