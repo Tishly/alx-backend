@@ -5,7 +5,7 @@
 from flask import Flask, render_template, g
 from flask_babel import Babel
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 babel = Babel(app)
 
 
@@ -21,7 +21,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", methods=['GET'], locale=fr)
+@app.route("/", methods=['GET'], strict_slashes=False)
     def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("4-index.html")
@@ -30,12 +30,13 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale():
     """
-        Determines the best match with supported languages
+        Ensures URL contains matching translation
+    else:
+        Determines the best match within supported languages
     """
-    if g.get.lang_code not in app.config['LANGUAGES']:
-        #g.lang_code = 'fr'
-        #return g.lang_code
-        return app.config['BABEL_DEFAULT_LOCALE']
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
