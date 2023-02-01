@@ -21,7 +21,7 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", methods=['GET'], locale='fr')
+@app.route("/", methods=['GET'], locale=fr)
     def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("4-index.html")
@@ -32,10 +32,11 @@ def get_locale():
     """
         Determines the best match with supported languages
     """
-    if not g.get('lang_code', 'fr'):
-        g.lang_code = 'fr'
-        return g.lang_code
-    # return request.accept_languages.best_match(app.config['LANGUAGES'])
+    if g.get.lang_code not in app.config['LANGUAGES']:
+        #g.lang_code = 'fr'
+        #return g.lang_code
+        return app.config['BABEL_DEFAULT_LOCALE']
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 if __name__ == "__main__":
