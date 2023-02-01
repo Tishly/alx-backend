@@ -2,7 +2,7 @@
 """
     A Basic Babel app
 """
-from flask import Flask, render_template, g
+from flask import Flask, render_template, request
 from flask_babel import Babel
 
 app = Flask(__name__, template_folder='templates')
