@@ -21,8 +21,8 @@ class Config(object):
 app.config.from_object(Config)
 
 
-@app.route("/", methods=['GET'], locale=fr)
-def home() -> str:
+@app.route("/", methods=['GET'])
+    def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("4-index.html")
 
