@@ -22,7 +22,7 @@ app.config.from_object(Config)
 
 
 @app.route("/", methods=['GET'], strict_slashes=False)
-    def home() -> str:
+def home() -> str:
     """Endpoint that routes user to the homepage"""
     return render_template("4-index.html")
 
