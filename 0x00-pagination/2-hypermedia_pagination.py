@@ -3,13 +3,16 @@
 import math
 
 
+server = __import__('1-simple_pagination').Server
+
+
 def get_hyper(page: int = 1, page_size: int = 10) -> dict:
     """A function that takes two args nd returns key:value pairs
     """
     assert isinstance(page, int) and page > 0
     assert isinstance(page_size, int) and page_size > 0
 
-    server = Server()
+    # server = Server()
     dataset = server.dataset()
 
     start_index, end_index = index_range(page, page_size)
