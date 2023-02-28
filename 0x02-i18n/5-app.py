@@ -9,12 +9,11 @@ app = Flask(__name__, template_folder='templates')
 babel = Babel(app)
 
 
-
 users = {1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
          2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
          3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
          4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-}
+        }
 
 
 class Config(object):
@@ -37,6 +36,7 @@ def before_request() -> None:
     user = get_user()
     g.user = user
 
+
 def get_user() -> Union[Dict, None]:
     """
         Retrieves a user data based on id passed to URL
@@ -47,6 +47,7 @@ def get_user() -> Union[Dict, None]:
     return None
 
     return users.id
+
 
 @app.route("/", methods=['GET'], strict_slashes=False)
 def home() -> str:
